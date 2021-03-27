@@ -39,9 +39,9 @@ def proxies(URL, No_of_IP):
 
         if result != "Skipping, Connection error":
             j += 1
-            webdriver.DesiredCapabilities.CHROME['proxy'] = {"httpProxy": proxy, "ftpProxy": proxy, "sslProxy": proxy,
-                                                            "proxyType": "MANUAL", }
-            driver = webdriver.Chrome('chromedriver.exe')
+            webdriver.DesiredCapabilities.CHROME['proxy'] = {"httpProxy": proxy, "ftpProxy": proxy, "sslProxy": proxy,"proxyType": "MANUAL", }
+            chrome_options.add_argument('--no-sandbox')
+            driver = webdriver.Chrome("chromedriver.exe",chrome_options=chrome_options)
             try:
                 driver.get(url=URL)
             except:
