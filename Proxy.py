@@ -43,11 +43,7 @@ def proxies(URL, No_of_IP):
                                                             "proxyType": "MANUAL", }
             driver = webdriver.Chrome("E:\Projects\Web Scraping\chromedriver.exe")
             try:
-                # time.sleep(5)
                 driver.get(url=URL)
-                # time.sleep(5)
-                # contents = driver.find_element_by_partial_link_text("what is my ip")
-                # contents.click()
             except:
                 print("Not")
             driver.close()
