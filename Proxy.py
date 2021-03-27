@@ -47,7 +47,7 @@ def proxies(URL, No_of_IP):
             chrome_options.add_argument("--no-sandbox")
             webdriver.DesiredCapabilities.CHROME['proxy'] = {"httpProxy": proxy, "ftpProxy": proxy, "sslProxy": proxy,
                                                             "proxyType": "MANUAL", }
-            driver = webdriver.Chrome("C:\Program Files (x86)\chromedriver.exe",chrome_options=chrome_options)
+            driver = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"),chrome_options=chrome_options)
             try:
                 # time.sleep(5)
                 driver.get(url=URL)
