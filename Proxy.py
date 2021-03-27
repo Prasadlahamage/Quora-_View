@@ -41,7 +41,7 @@ def proxies(URL, No_of_IP):
             j += 1
             webdriver.DesiredCapabilities.CHROME['proxy'] = {"httpProxy": proxy, "ftpProxy": proxy, "sslProxy": proxy,
                                                             "proxyType": "MANUAL", }
-            driver = webdriver.Chrome('Chromedriver.exe')
+            driver = webdriver.Chrome('chromedriver.exe')
             try:
                 driver.get(url=URL)
             except:
