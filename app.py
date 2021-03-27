@@ -15,4 +15,4 @@ def proxy():
     return proxies(url, int(ip)+1)
     
 if __name__ == '__main__':
-    app.run()
+    app.run(Debug="True")
