@@ -1,6 +1,7 @@
 import requests
 from lxml.html import fromstring
 from itertools import cycle
+import os
 
 from selenium import webdriver
 
@@ -39,10 +40,20 @@ def proxies(URL, No_of_IP):
 
         if result != "Skipping, Connection error":
             j += 1
-            webdriver.DesiredCapabilities.CHROME['proxy'] = {"httpProxy": proxy, "ftpProxy": proxy, "sslProxy": proxy,"proxyType": "MANUAL", }
-            driver = webdriver.Chrome("chromedriver.exe")
+            chrome_options=webdriver.ChromeOptions()
+            chrome_options.binary_location=os.environ.get("GOOGLE_CHROME_BIN")
+            chrome_options.add_argument("--headless")
+            chrome_options.add_argument("--disable-dev-shm-usage")
+            chrome_options.add_argument("--no-sandbox")
+            webdriver.DesiredCapabilities.CHROME['proxy'] = {"httpProxy": proxy, "ftpProxy": proxy, "sslProxy": proxy,
+                                                            "proxyType": "MANUAL", }
+            driver = webdriver.Chrome("C:\Program Files (x86)\chromedriver.exe",chrome_options=chrome_options)
             try:
+                # time.sleep(5)
                 driver.get(url=URL)
+                # time.sleep(5)
+                # contents = driver.find_element_by_partial_link_text("what is my ip")
+                # contents.click()
             except:
                 print("Not")
             driver.close()
